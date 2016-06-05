@@ -2,33 +2,17 @@ require_relative '../lib/deck'
 require_relative '../lib/player'
 require_relative '../lib/dealer'
 
-  def cards_remaining
-    @cards.length
-  end
 
-  def shuffle
-    @cards = @cards.shuffle
   end
-
-  def draw
-    @cards.shift
-  end
-
-  @deck = shuffle
   # puts @cards
   # puts "*" * 60
   # puts cards_remaining
   # puts "*" * 60
-  puts @deck
-  puts "*" * 60
   # puts draw
 end
 
 def play
-  deal
-  p_draw
   p_turn
-  c_draw
   c_turn
   p_showhand_UI
   c_showhand_UI

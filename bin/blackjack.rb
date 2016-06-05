@@ -48,7 +48,6 @@ def p_showhand_UI
   print @p_hand
   puts
   puts
-  puts "total is *#{p_sum}*"
   puts
   puts "-" * 60
 end
@@ -58,7 +57,6 @@ def c_showhand_UI
   print @c_hand
   puts
   puts
-  puts "total is *#{c_sum}*"
   puts
   puts "-" * 60
 end
@@ -105,26 +103,12 @@ def c_turn
   puts "Dealer take another hit?"
   print "> "
   c_thinking_UI
-  if c_sum <= 16
-    @c_hand.push @deck.shift
     c_turn
   end
 end
 
-def p_sum
-  p_total = 0
-  @p_hand.each do | card |
-    p_total = card + p_total
-  end
-  p_total
 end
 
-def c_sum
-  c_total = 0
-  @c_hand.each do | card |
-    c_total = card + c_total
-  end
-  c_total
 end
 
 

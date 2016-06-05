@@ -38,28 +38,11 @@ end
 def play
   p_turn
   c_turn
-  p_showhand_UI
-  c_showhand_UI
 end
 
-def p_showhand_UI
   system('clear')
-  puts "PLAYER hand"
-  print @p_hand
-  puts
-  puts
-  puts
-  puts "-" * 60
 end
 
-def c_showhand_UI
-  puts "DEALER hand"
-  print @c_hand
-  puts
-  puts
-  puts
-  puts "-" * 60
-end
 
 def c_thinking_UI
   print "."
@@ -93,8 +76,6 @@ def p_turn
 end
 
 def c_turn
-  p_showhand_UI
-  c_showhand_UI
   puts "Dealer take another hit?"
   print "> "
   c_thinking_UI

@@ -36,13 +36,20 @@ def challenge
 end
 
 def play
+  @deck.shuffle
+  @c_score = @computer.score
+  @p_score = @player.score
+  @c_hand = @computer.hand
+  @p_hand = @player.hand
+  p_deal
+  c_deal
   p_turn
   c_turn
-end
-
+  sleep 2
   system('clear')
   p_showhand
   c_showhand
+  determine_winner
 end
 
 def p_count

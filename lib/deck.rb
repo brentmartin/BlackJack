@@ -1,9 +1,11 @@
 class Deck
-  attr_reader :cards
+  attr_accessor :cards
   def initialize
     @cards = []
+    bjscoring = (1..11).to_a
+    2.times do bjscoring << 11 end
     4.times do
-      (1..13).each do |n|
+      bjscoring.each do |n|
         @cards.push(n)
       end
     end

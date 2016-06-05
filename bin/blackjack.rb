@@ -43,17 +43,6 @@ end
   system('clear')
 end
 
-
-def c_thinking_UI
-  print "."
-  sleep 1
-  print "."
-  sleep 1
-  print "."
-  sleep 1
-end
-
-
   end
 end
 
@@ -87,6 +76,14 @@ end
 
 end
 
+def c_thinking_UI
+  print "."
+  sleep 1
+  print "."
+  sleep 1
+  print "."
+  sleep 1
+end
 
 
 intro

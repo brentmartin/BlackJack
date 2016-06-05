@@ -45,7 +45,12 @@ end
   c_showhand
 end
 
+def p_count
+  total = 0
+  @p_hand.each do | card |
+    total = card + total
   end
+  @p_score = total
 end
 
   2.times do
@@ -53,15 +58,16 @@ end
 end
 
 def p_turn
-  p_hit = "Y"
-  while p_hit.upcase == "Y"
-    p_showhand_UI
+  hit = "Y"
+  while hit.upcase == "Y"
+    system('clear')
+    p_count
     p_showhand
     puts "Would you like another hit? (y) or (n)"
     print "> "
-    p_hit = gets.chomp
-    if p_hit.upcase ==  "Y"
-      @p_hand.push @deck.shift
+    hit = gets.chomp
+    if hit.upcase ==  "Y"
+      @p_hand.push @deck.draw
     else
     end
   end
@@ -75,6 +81,14 @@ def p_showhand
   puts "player total is *#{@p_score}*"
   puts
   puts "━" * 60
+end
+
+def c_count
+  total = 0
+  @c_hand.each do | card |
+    total = card + total
+  end
+  @c_score = total
 end
 def c_turn
   p_showhand

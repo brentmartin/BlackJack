@@ -78,6 +78,7 @@ def p_showhand
 end
 def c_turn
   p_showhand
+  c_hidehand
   puts "Dealer take another hit?"
   print "> "
   c_thinking_UI
@@ -85,6 +86,15 @@ def c_turn
   end
 end
 
+def c_hidehand
+  print ":dealer > "
+  print "[X"
+  print ", X" * (@c_hand.count - 1)
+  puts "]"
+  puts
+  puts "dealer total is *X*"
+  puts
+  puts "━" * 60
 end
 
 def c_showhand

@@ -1,12 +1,3 @@
-def deal
-  @cards = []
-  @p_hand = []
-  @c_hand = []
-  4.times do
-    (1..13).each do |n|
-      @cards.push(n)
-    end
-  end
 require_relative '../lib/deck'
 require_relative '../lib/player'
 require_relative '../lib/dealer'

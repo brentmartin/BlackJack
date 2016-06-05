@@ -4,11 +4,6 @@ require_relative '../lib/dealer'
 
 
   end
-  # puts @cards
-  # puts "*" * 60
-  # puts cards_remaining
-  # puts "*" * 60
-  # puts draw
 end
 
 def play

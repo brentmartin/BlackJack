@@ -60,7 +60,9 @@ def p_count
   @p_score = total
 end
 
+def p_deal
   2.times do
+    @p_hand.push @deck.draw
   end
 end
 
@@ -97,12 +99,23 @@ def c_count
   end
   @c_score = total
 end
+
+def c_deal
+  2.times do
+    @c_hand.push @deck.draw
+  end
+end
+
 def c_turn
+  system('clear')
+  c_count
   p_showhand
   c_hidehand
   puts "Dealer take another hit?"
   print "> "
   c_thinking_UI
+  if @c_score <= 16
+    @c_hand.push @deck.draw
     c_turn
   end
 end

@@ -152,4 +152,7 @@ end
 
 
 intro
+@player = Player.new("PLAYER")
+@computer = Dealer.new
+@deck = Deck.new
 challenge

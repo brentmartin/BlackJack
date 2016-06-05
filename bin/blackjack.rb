@@ -41,6 +41,8 @@ def play
 end
 
   system('clear')
+  p_showhand
+  c_showhand
 end
 
   end
@@ -54,6 +56,7 @@ def p_turn
   p_hit = "Y"
   while p_hit.upcase == "Y"
     p_showhand_UI
+    p_showhand
     puts "Would you like another hit? (y) or (n)"
     print "> "
     p_hit = gets.chomp
@@ -64,7 +67,17 @@ def p_turn
   end
 end
 
+def p_showhand
+  print ":player => "
+  print @p_hand
+  puts
+  puts
+  puts "player total is *#{@p_score}*"
+  puts
+  puts "━" * 60
+end
 def c_turn
+  p_showhand
   puts "Dealer take another hit?"
   print "> "
   c_thinking_UI
@@ -74,6 +87,14 @@ end
 
 end
 
+def c_showhand
+  print "[DEALER] > "
+  print @c_hand
+  puts
+  puts
+  puts "dealer total is *#{@c_score}*"
+  puts
+  puts "━" * 60
 end
 
 def c_thinking_UI

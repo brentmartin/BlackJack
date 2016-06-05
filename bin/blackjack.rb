@@ -7,6 +7,9 @@ def deal
       @cards.push(n)
     end
   end
+require_relative '../lib/deck'
+require_relative '../lib/player'
+require_relative '../lib/dealer'
 
   def cards_remaining
     @cards.length

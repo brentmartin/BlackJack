@@ -71,15 +71,10 @@ def c_thinking_UI
 end
 
 
-def p_draw
-  2.times do
-    @p_hand.push @deck.shift
   end
 end
 
-def c_draw
   2.times do
-    @c_hand.push @deck.shift
   end
 end
 

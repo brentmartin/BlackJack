@@ -93,6 +93,11 @@ def setup
   @p_hand = @player.hand
 end
 
+def reset
+  @deck = Deck.new
+  play
+end
+
 def p_count
   total = 0
   @p_hand.each do | card |

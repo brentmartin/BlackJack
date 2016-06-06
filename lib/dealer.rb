@@ -1,8 +1,9 @@
 class Dealer
-  attr_accessor :c_score, :c_hand
+  attr_accessor :c_score, :c_hand, :c_wins
   def initialize
     @c_score = c_score
     @c_hand = c_hand
+    @c_wins = c_wins
   end
 
   def hand
@@ -11,5 +12,9 @@ class Dealer
 
   def score
     @c_score = 0
+  end
+
+  def wins
+    @c_wins =+ 1
   end
 end

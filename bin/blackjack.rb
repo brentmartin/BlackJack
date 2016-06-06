@@ -12,7 +12,9 @@ def play
   c_showhand
   determine_winner
   play_again
+  reset
 end
+
 def intro
   system('clear')
   puts "Welcome to Blackjack, what is your name?"

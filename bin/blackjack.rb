@@ -47,6 +47,22 @@ def challenge
 end
 
 def play_again
+  sleep 3
+  system('clear')
+  determine_winner
+  score_board
+  puts
+  puts "━" * 60
+  puts
+  puts "And our total win (and we don't count ties, so don't ask) count is:"
+  puts "                              |                               "
+  puts "                    |  Player  |  Dealer  |                     "
+  puts "                    |          |          |                     "
+  puts "                    |    #{@p_board}    |    #{@c_board}    |                     "
+  puts "                    |          |          |                     "
+  puts "                    |          |          |                     "
+  puts
+  puts "━" * 60
   puts "So, shall we play again? (y) or (n)"
   print "> "
   question_playgame = gets.chomp

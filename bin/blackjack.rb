@@ -159,6 +159,7 @@ def c_turn
     @c_hand.push @deck.draw
     c_turn
   end
+  system('clear')
 end
 
 def c_hidehand

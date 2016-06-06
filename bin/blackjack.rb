@@ -2,6 +2,16 @@ require_relative '../lib/deck'
 require_relative '../lib/player'
 require_relative '../lib/dealer'
 
+def play
+  setup
+  p_deal
+  c_deal
+  p_turn
+  c_turn
+  p_showhand
+  c_showhand
+  determine_winner
+end
 def intro
   system('clear')
   puts "Welcome to Blackjack, what is your name?"
@@ -35,21 +45,11 @@ def challenge
   end
 end
 
-def play
   @deck.shuffle
   @c_score = @computer.score
   @p_score = @player.score
   @c_hand = @computer.hand
   @p_hand = @player.hand
-  p_deal
-  c_deal
-  p_turn
-  c_turn
-  sleep 2
-  system('clear')
-  p_showhand
-  c_showhand
-  determine_winner
 end
 
 def p_count

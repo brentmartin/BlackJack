@@ -176,6 +176,11 @@ def c_thinking_UI
 end
 
 def determine_winner
+  puts
+  print "Player = #{@p_score}"
+  print "  |  "
+  print "Dealer = #{@c_score}"
+  puts
   if @p_score >= 22
     @p_score = 0
   end
@@ -183,20 +188,16 @@ def determine_winner
     @c_score = 0
   end
   if @p_score < @c_score
-    winner = "DEALER WINS!"
+    puts "DEALER WINS!"
+    @c_wins = @computer.wins
   elsif @p_score > @c_score
-    winner = "PLAYER WINS!"
+    puts "PLAYER WINS!"
+    @p_wins = @player.wins
   elsif @p_score == @c_score
-    winner = "IT'S A TIE!"
+    puts "IT'S A TIE!"
   else
-    winner = "ERROR... something doesn't add up"
+    puts "ERROR... something doesn't add up"
   end
-  puts
-  print "Player = #{@p_score}"
-  print "  |  "
-  print "Dealer = #{@c_score}"
-  puts
-  puts winner
 end
 
 intro

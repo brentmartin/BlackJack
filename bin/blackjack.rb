@@ -11,6 +11,7 @@ def play
   p_showhand
   c_showhand
   determine_winner
+  play_again
 end
 def intro
   system('clear')
@@ -45,6 +46,30 @@ def challenge
   end
 end
 
+def play_again
+  puts "So, shall we play again? (y) or (n)"
+  print "> "
+  question_playgame = gets.chomp
+  if question_playgame == "y"
+    system('clear')
+    puts "Alright! Lets get started."
+    sleep 2
+    reset
+  elsif question_playgame == "n"
+    system('clear')
+    puts "Have a wonderful evening!"
+    sleep 2
+  else
+    system('clear')
+    puts "I'm sorry, I didn't understand your answer."
+    sleep 2
+    system('clear')
+    print "So "
+    play_again
+  end
+end
+
+def setup
   @deck.shuffle
   @c_score = @computer.score
   @p_score = @player.score

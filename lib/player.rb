@@ -4,7 +4,7 @@ class Player
     @name = name
     @p_score = p_score
     @p_hand = p_hand
-    @p_wins = p_wins
+    @p_wins = -1
   end
 
   def hand
@@ -16,6 +16,6 @@ class Player
   end
 
   def wins
-    @p_wins =+ 1
+    @p_wins += 1
   end
 end

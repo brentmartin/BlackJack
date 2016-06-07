@@ -38,7 +38,6 @@ def intro_challenge
 end
 
 def challenge
-  puts "shall we play? (y) or (n)"
   print "> "
   question_playgame = gets.chomp
   if question_playgame == "y"
@@ -54,13 +53,10 @@ def challenge
     system('clear')
     puts "I'm sorry, I didn't understand your answer."
     sleep 2
-    system('clear')
-    print "So "
-    challenge
+    repeat_challenge
   end
 end
 
-def play_again
 def repeat_challenge
   system('clear')
   puts "So #{@name}, shall we play? (y) or (n)"

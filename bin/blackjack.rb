@@ -236,10 +236,10 @@ def determine_winner
 end
 
 def score_board
-  if @p_wins == nil then @p_board = "00" end
+  if @p_wins == 0 then @p_board = "00" end
   if @p_wins <= 9 then @p_board = "0#{@p_wins}" end
   if @p_wins >= 10 then @p_board = "#{@p_wins}" end
-  if @c_wins == nil then @c_board = "00" end
+  if @c_wins == 0 then @c_board = "00" end
   if @c_wins <= 9 then @c_board = "0#{@c_wins}" end
   if @c_wins >= 10 then @c_board = "#{@c_wins}" end
 end

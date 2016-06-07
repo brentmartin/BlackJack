@@ -107,11 +107,6 @@ def setup
   @p_hand = @player.hand
 end
 
-def reset
-  @deck = Deck.new
-  play
-end
-
 # PLAYER actions
 def p_count
   total = 0

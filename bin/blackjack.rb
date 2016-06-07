@@ -86,6 +86,7 @@ def summary
 end
 
 def setup
+  @deck = Deck.new
   @deck.shuffle
   @c_score = @computer.score
   @p_score = @player.score

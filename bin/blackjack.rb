@@ -22,6 +22,7 @@ def play
   p_showhand
   c_showhand
   determine_winner
+  summary
 end
 
 def intro_name
@@ -63,15 +64,16 @@ def repeat_challenge
   challenge
 end
 
+def summary
   sleep 3
   system('clear')
-  determine_winner
   score_board
+  puts @outcome
   puts
   puts "━" * 60
   puts
   puts "And our total win (and we don't count ties, so don't ask) count is:"
-  puts "                              |                               "
+  puts "                                                              "
   puts "                    |  Player  |  Dealer  |                     "
   puts "                    |          |          |                     "
   puts "                    |    #{@p_board}    |    #{@c_board}    |                     "
@@ -79,26 +81,8 @@ end
   puts "                    |          |          |                     "
   puts
   puts "━" * 60
-  puts "So, shall we play again? (y) or (n)"
-  print "> "
-  question_playgame = gets.chomp
-  if question_playgame == "y"
-    system('clear')
-    puts "Alright! Lets get started."
-    sleep 2
-    reset
-  elsif question_playgame == "n"
-    system('clear')
-    puts "Have a wonderful evening!"
-    sleep 2
-  else
-    system('clear')
-    puts "I'm sorry, I didn't understand your answer."
-    sleep 2
-    system('clear')
-    print "So "
-    play_again
-  end
+  puts "So #{@name}, shall we play again? (y) or (n)"
+  challenge
 end
 
 def setup

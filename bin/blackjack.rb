@@ -111,6 +111,7 @@ def reset
   play
 end
 
+# PLAYER actions
 def p_count
   total = 0
   @p_hand.each do | card |
@@ -151,6 +152,7 @@ def p_showhand
   puts "━" * 60
 end
 
+# DEALER actions
 def c_count
   total = 0
   @c_hand.each do | card |
@@ -210,6 +212,7 @@ def c_thinking_UI
   sleep 1
 end
 
+# board logic
 def determine_winner
   puts
   print "Player = #{@p_score}"

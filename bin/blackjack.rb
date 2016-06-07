@@ -22,18 +22,19 @@ def play
   p_showhand
   c_showhand
   determine_winner
-  play_again
-  reset
 end
 
-def intro
+def intro_name
   system('clear')
   puts "Welcome to Blackjack, what is your name?"
   print "> "
-  name = gets.chomp
+end
+
+def intro_challenge
   sleep 1
   system('clear')
-  print "Howdy #{name}, "
+  puts "Howdy #{@name}, shall we play? (y) or (n)"
+  challenge
 end
 
 def challenge

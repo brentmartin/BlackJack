@@ -2,6 +2,17 @@ require_relative '../lib/deck'
 require_relative '../lib/player'
 require_relative '../lib/dealer'
 
+def boot_up
+  intro_name
+  name = gets.chomp
+  @player = Player.new(name)
+  @name = @player.name
+  @p_wins = @player.wins
+  @computer = Dealer.new
+  @c_wins = @computer.wins
+  intro_challenge
+end
+
 def play
   setup
   p_deal
@@ -234,8 +245,4 @@ def score_board
   if @c_wins >= 10 then @c_board = "#{@c_wins}" end
 end
 
-intro
-@player = Player.new("PLAYER")
-@computer = Dealer.new
-@deck = Deck.new
-challenge
+boot_up

@@ -212,16 +212,17 @@ def determine_winner
     @c_score = 0
   end
   if @p_score < @c_score
-    puts "DEALER WINS!"
+    @outcome = "DEALER WINS!"
     @c_wins = @computer.wins
   elsif @p_score > @c_score
-    puts "PLAYER WINS!"
+    @outcome = "PLAYER WINS!"
     @p_wins = @player.wins
   elsif @p_score == @c_score
-    puts "IT'S A TIE!"
+    @outcome = "IT'S A TIE!"
   else
     puts "ERROR... something doesn't add up"
   end
+  puts @outcome
 end
 
 def score_board

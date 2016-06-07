@@ -3,7 +3,7 @@ class Dealer
   def initialize
     @c_score = c_score
     @c_hand = c_hand
-    @c_wins = c_wins
+    @c_wins = -1
   end
 
   def hand
@@ -15,6 +15,6 @@ class Dealer
   end
 
   def wins
-    @c_wins =+ 1
+    @c_wins += 1
   end
 end

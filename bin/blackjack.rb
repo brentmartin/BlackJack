@@ -61,6 +61,12 @@ def challenge
 end
 
 def play_again
+def repeat_challenge
+  system('clear')
+  puts "So #{@name}, shall we play? (y) or (n)"
+  challenge
+end
+
   sleep 3
   system('clear')
   determine_winner

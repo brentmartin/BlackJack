@@ -126,7 +126,7 @@ def p_turn
 end
 
 def p_showhand
-  print ":player => "
+  print "#{@name} => "
   print @p_hand
   puts
   puts

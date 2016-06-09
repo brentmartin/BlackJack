@@ -212,7 +212,7 @@ def determine_winner
     @outcome = "DEALER WINS!"
     @c_wins = @computer.wins
   elsif @p_score > @c_score
-    @outcome = "PLAYER WINS!"
+    @outcome = "#{@name} WINS!"
     @p_wins = @player.wins
   elsif @p_score == @c_score
     @outcome = "IT'S A TIE!"

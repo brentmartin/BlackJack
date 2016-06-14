@@ -222,13 +222,13 @@ def determine_winner
   puts @outcome
 end
 
+def board_val(wins)
+  "%02d" % wins
+end
+
 def score_board
-  if @p_wins == 0 then @p_board = "00" end
-  if @p_wins <= 9 then @p_board = "0#{@p_wins}" end
-  if @p_wins >= 10 then @p_board = "#{@p_wins}" end
-  if @c_wins == 0 then @c_board = "00" end
-  if @c_wins <= 9 then @c_board = "0#{@c_wins}" end
-  if @c_wins >= 10 then @c_board = "#{@c_wins}" end
+  @p_board = board_val(@p_wins)
+  @c_board = board_val(@c_wins)
 end
 
 boot_up

@@ -35,7 +35,7 @@ def intro_challenge
   sleep 1
   system('clear')
   puts "Howdy #{@name}, shall we play? (y) or (n)"
-  challenge
+  challenge { sleep 3 }
 end
 
 def challenge
@@ -44,16 +44,16 @@ def challenge
   if question_playgame == "y"
     system('clear')
     puts "Alright! Lets get started."
-    sleep 2
+    yield
     play
   elsif question_playgame == "n"
     system('clear')
     puts "Have a wonderful evening!"
-    sleep 2
+    yield
   else
     system('clear')
     puts "I'm sorry, I didn't understand your answer."
-    sleep 2
+    yield
     repeat_challenge
   end
 end
@@ -61,7 +61,7 @@ end
 def repeat_challenge
   system('clear')
   puts "So #{@name}, shall we play? (y) or (n)"
-  challenge
+  challenge { sleep 2 }
 end
 
 def summary

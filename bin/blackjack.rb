@@ -187,12 +187,10 @@ def c_showhand
 end
 
 def c_thinking_UI
-  print "."
-  sleep 1
-  print "."
-  sleep 1
-  print "."
-  sleep 1
+  3.times do
+    print "."
+    sleep 1
+  end
 end
 
 # board logic

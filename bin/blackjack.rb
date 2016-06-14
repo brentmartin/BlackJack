@@ -9,18 +9,6 @@ def boot_up
   intro_challenge
 end
 
-def play
-  setup
-  p_deal
-  c_deal
-  p_turn
-  c_turn
-  p_showhand
-  c_showhand
-  determine_winner
-  summary
-end
-
 def intro_name
   system('clear')
   puts "Welcome to BlackJack, what is your name?"
@@ -37,12 +25,12 @@ end
 def challenge
   print "> "
   question_playgame = gets.chomp
-  if question_playgame == "y"
+  if question_playgame.downcase == "y"
     system('clear')
     puts "Alright! Let's get started."
     yield
     play
-  elsif question_playgame == "n"
+  elsif question_playgame.downcase == "n"
     system('clear')
     puts "Have a wonderful evening!"
     yield
@@ -54,30 +42,21 @@ def challenge
   end
 end
 
+def play
+  setup
+  deal(@p_hand)
+  deal(@c_hand)
+  p_turn
+  c_turn
+  p_showhand
+  c_showhand
+  determine_winner
+  summary
+end
+
 def repeat_challenge
   system('clear')
   puts "So #{@player.name}, shall we play? (y) or (n)"
-  challenge { sleep 2 }
-end
-
-def summary
-  sleep 3
-  system('clear')
-  score_board
-  puts @outcome
-  puts
-  puts "━" * 60
-  puts
-  puts "And our total win (and we don't count ties, so don't ask) count is:"
-  puts "                                                              "
-  puts "                    |  Player  |  Dealer  |                     "
-  puts "                    |          |          |                     "
-  puts "                    |    #{@p_board}    |    #{@c_board}    |                     "
-  puts "                    |          |          |                     "
-  puts "                    |          |          |                     "
-  puts
-  puts "━" * 60
-  puts "So #{@player.name}, shall we play again? (y) or (n)"
   challenge { sleep 2 }
 end
 
@@ -96,19 +75,7 @@ def deal(hand)
   end
 end
 
-# PLAYER actions
-def p_count
-  total = 0
-  @p_hand.each do | card |
-    total = card + total
-  end
-  @p_score = total
-end
-
-def p_deal
-  deal(@p_hand)
-end
-
+# User actions
 def p_turn
   hit = "Y"
   while hit.upcase == "Y"
@@ -135,19 +102,15 @@ def p_showhand
   puts "━" * 60
 end
 
-# DEALER actions
-def c_count
+def p_count
   total = 0
-  @c_hand.each do | card |
+  @p_hand.each do | card |
     total = card + total
   end
-  @c_score = total
+  @p_score = total
 end
 
-def c_deal
-  deal(@c_hand)
-end
-
+# Computer actions
 def c_turn
   system('clear')
   c_count
@@ -163,6 +126,24 @@ def c_turn
   system('clear')
 end
 
+def c_showhand
+  print "[DEALER] > "
+  print @c_hand
+  puts
+  puts
+  puts "dealer total is *#{@c_score}*"
+  puts
+  puts "━" * 60
+end
+
+def c_count
+  total = 0
+  @c_hand.each do | card |
+    total = card + total
+  end
+  @c_score = total
+end
+
 def c_hidehand
   print ":dealer > "
   print "[X"
@@ -174,16 +155,6 @@ def c_hidehand
   puts "━" * 60
 end
 
-def c_showhand
-  print "[DEALER] > "
-  print @c_hand
-  puts
-  puts
-  puts "dealer total is *#{@c_score}*"
-  puts
-  puts "━" * 60
-end
-
 def c_thinking_UI
   3.times do
     print "."
@@ -191,7 +162,7 @@ def c_thinking_UI
   end
 end
 
-# board logic
+# Score keeping
 def determine_winner
   puts
   print "Player = #{@p_score}"
@@ -216,6 +187,27 @@ def determine_winner
     puts "ERROR... something doesn't add up"
   end
   puts @outcome
+end
+
+def summary
+  sleep 3
+  system('clear')
+  score_board
+  puts @outcome
+  puts
+  puts "━" * 60
+  puts
+  puts "And our total win (and we don't count ties, so don't ask) count is:"
+  puts "                                                              "
+  puts "                    |  Player  |  Dealer  |                     "
+  puts "                    |          |          |                     "
+  puts "                    |    #{@p_board}    |    #{@c_board}    |                     "
+  puts "                    |          |          |                     "
+  puts "                    |          |          |                     "
+  puts
+  puts "━" * 60
+  puts "So #{@player.name}, shall we play again? (y) or (n)"
+  challenge { sleep 2 }
 end
 
 def board_val(wins)

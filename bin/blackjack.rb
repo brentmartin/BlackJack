@@ -4,12 +4,12 @@ require_relative '../lib/dealer'
 
 def boot_up
   intro_name
-  name = gets.chomp
-  @player = Player.new(name)
-  @name = @player.name
-  @p_wins = @player.wins
+  name      = gets.chomp
+  @player   = Player.new(name)
+  @name     = @player.name
+  @p_wins   = @player.wins
   @computer = Dealer.new
-  @c_wins = @computer.wins
+  @c_wins   = @computer.wins
   intro_challenge
 end
 
@@ -94,6 +94,12 @@ def setup
   @p_hand = @player.hand
 end
 
+def deal(hand)
+  2.times do
+    hand.push @deck.draw
+  end
+end
+
 # PLAYER actions
 def p_count
   total = 0
@@ -104,9 +110,7 @@ def p_count
 end
 
 def p_deal
-  2.times do
-    @p_hand.push @deck.draw
-  end
+  deal(@p_hand)
 end
 
 def p_turn
@@ -145,9 +149,7 @@ def c_count
 end
 
 def c_deal
-  2.times do
-    @c_hand.push @deck.draw
-  end
+  deal(@c_hand)
 end
 
 def c_turn

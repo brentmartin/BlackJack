@@ -1,15 +1,14 @@
 require_relative '../lib/deck'
 require_relative '../lib/player'
-require_relative '../lib/dealer'
 
 def boot_up
   intro_name
   name      = gets.chomp
   @player   = Player.new(name)
   @name     = @player.name
-  @p_wins   = @player.wins
-  @computer = Dealer.new
-  @c_wins   = @computer.wins
+  @p_wins   = @player.wins_game
+  @computer = Player.new(nil)
+  @c_wins   = @computer.wins_game
   intro_challenge
 end
 
@@ -27,14 +26,14 @@ end
 
 def intro_name
   system('clear')
-  puts "Welcome to Blackjack, what is your name?"
+  puts "Welcome to BlackJack, what is your name?"
   print "> "
 end
 
 def intro_challenge
   sleep 1
   system('clear')
-  puts "Howdy #{@name}, shall we play? (y) or (n)"
+  puts "Howdy #{@player.name}, shall we play? (y) or (n)"
   challenge { sleep 3 }
 end
 
@@ -43,7 +42,7 @@ def challenge
   question_playgame = gets.chomp
   if question_playgame == "y"
     system('clear')
-    puts "Alright! Lets get started."
+    puts "Alright! Let's get started."
     yield
     play
   elsif question_playgame == "n"
@@ -82,7 +81,7 @@ def summary
   puts
   puts "━" * 60
   puts "So #{@name}, shall we play again? (y) or (n)"
-  challenge
+  challenge { sleep 2 }
 end
 
 def setup
@@ -90,8 +89,8 @@ def setup
   @deck.shuffle
   @c_score = @computer.score
   @p_score = @player.score
-  @c_hand = @computer.hand
-  @p_hand = @player.hand
+  @c_hand  = @computer.hand
+  @p_hand  = @player.hand
 end
 
 def deal(hand)
@@ -210,10 +209,10 @@ def determine_winner
   end
   if @p_score < @c_score
     @outcome = "DEALER WINS!"
-    @c_wins = @computer.wins
+    @computer.wins_game
   elsif @p_score > @c_score
     @outcome = "#{@name} WINS!"
-    @p_wins = @player.wins
+    @player.wins_game
   elsif @p_score == @c_score
     @outcome = "IT'S A TIE!"
   else
@@ -227,8 +226,8 @@ def board_val(wins)
 end
 
 def score_board
-  @p_board = board_val(@p_wins)
-  @c_board = board_val(@c_wins)
+  @p_board = board_val(@player.wins)
+  @c_board = board_val(@computer.wins)
 end
 
 boot_up

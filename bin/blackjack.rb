@@ -5,10 +5,7 @@ def boot_up
   intro_name
   name      = gets.chomp
   @player   = Player.new(name)
-  @name     = @player.name
-  @p_wins   = @player.wins_game
   @computer = Player.new(nil)
-  @c_wins   = @computer.wins_game
   intro_challenge
 end
 
@@ -59,7 +56,7 @@ end
 
 def repeat_challenge
   system('clear')
-  puts "So #{@name}, shall we play? (y) or (n)"
+  puts "So #{@player.name}, shall we play? (y) or (n)"
   challenge { sleep 2 }
 end
 
@@ -80,7 +77,7 @@ def summary
   puts "                    |          |          |                     "
   puts
   puts "━" * 60
-  puts "So #{@name}, shall we play again? (y) or (n)"
+  puts "So #{@player.name}, shall we play again? (y) or (n)"
   challenge { sleep 2 }
 end
 
@@ -129,7 +126,7 @@ def p_turn
 end
 
 def p_showhand
-  print "#{@name} => "
+  print "#{@player.name} => "
   print @p_hand
   puts
   puts
@@ -211,7 +208,7 @@ def determine_winner
     @outcome = "DEALER WINS!"
     @computer.wins_game
   elsif @p_score > @c_score
-    @outcome = "#{@name} WINS!"
+    @outcome = "#{@player.name} WINS!"
     @player.wins_game
   elsif @p_score == @c_score
     @outcome = "IT'S A TIE!"

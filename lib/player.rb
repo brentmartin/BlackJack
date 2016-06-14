@@ -4,7 +4,7 @@ class Player
     @name   = name
     @score  = score
     @hand   = hand
-    @wins   = -1
+    @wins   = 0
   end
 
   def hand
